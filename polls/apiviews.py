@@ -6,7 +6,11 @@ from rest_framework import viewsets
 from django.shortcuts import get_object_or_404
 
 from polls.models import Poll, Choice, Vote
-from polls.serializers import PollSerializer, ChoiceSerializer, VoteSerializer
+from polls.serializers import PollSerializer, ChoiceSerializer, VoteSerializer, UserSerializer
+
+
+class UserCreate(CreateAPIView):
+    serializer_class = UserSerializer
 
 
 class PollViewSet(viewsets.ModelViewSet):
