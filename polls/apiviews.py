@@ -2,10 +2,16 @@ from rest_framework.views import APIView
 from rest_framework.generics import ListAPIView, RetrieveDestroyAPIView, ListCreateAPIView,CreateAPIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework import viewsets
 from django.shortcuts import get_object_or_404
 
 from polls.models import Poll, Choice, Vote
 from polls.serializers import PollSerializer, ChoiceSerializer, VoteSerializer
+
+
+class PollViewSet(viewsets.ModelViewSet):
+    queryset = Poll.objects.all()
+    serializer_class = PollSerializer
 
 
 class PollList(ListCreateAPIView):
